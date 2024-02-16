@@ -23,6 +23,6 @@
   font-style: normal;
 }
 
-.dark-fill {
-  fill: rgb(255, 0, 0);
+.hover\:fill-black:hover {
+  fill: #000000;
 }
