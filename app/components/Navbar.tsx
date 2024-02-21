@@ -31,7 +31,7 @@ const Navbar = () => {
               </Link>
               {links.map((link, index) => (
                 <Link
-                  className={`${currentRoute === link.path ? 'text-black/60 ' : 'text-black/30 '}  transition-colors hover:text-black/60 se:px-2 sm:px-3 md:px-3 lg:px-3 xl:px-3 2xl:px-3 md:py-1 rounded-full font-google sm:py-0.5  fold:px-2 fold:text-xxs se:text-sm sm:text-md md:text-lg lg:text-lg xl:text-xl big:text-xl big:px-3.5`}
+                  className={`${currentRoute === link.path ? 'text-black/60 ' : 'text-black/30 '}  transition-colors duration-100 hover:text-black/60 se:px-2 sm:px-3 md:px-3 lg:px-3 xl:px-3 2xl:px-3 md:py-1 rounded-full font-google sm:py-0.5  fold:px-2 fold:text-xxs se:text-sm sm:text-md md:text-lg lg:text-lg xl:text-xl big:text-xl big:px-3.5`}
                   key={index}
                   href={link.path}
                 >
