@@ -1,13 +1,35 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import * as HoverCard from '@radix-ui/react-hover-card'
 import '../globals.css'
 import { states } from '../data/states'
 import Link from 'next/link'
 import Image from 'next/image'
+import { fetchWeather } from '../utils/meteo'
 
 const Map = () => {
   const [hoverState, setHoverState] = useState('')
+  const [weatherData, setWeatherData] = useState<{ [key: string]: any }>({})
+  useEffect(() => {
+    const fetchWeatherData = async () => {
+      const data: { [key: string]: any } = {}
+      for (const state of states) {
+        data[state.id] = await fetchWeather({
+          latitude: state.lat,
+          longitude: state.long,
+          current: [
+            'temperature_2m',
+            'apparent_temperature',
+            'precipitation',
+            'rain',
+            'snowfall',
+          ],
+        })
+      }
+      setWeatherData(data)
+    }
+    fetchWeatherData()
+  }, [])
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -90,7 +112,16 @@ const Map = () => {
                 <div className="flex flex-col gap-[15px]">
                   <div>
                     <div className="text-mauve12 m-0 text-[15px] font-medium leading-[1.5]">
-                      Meteo : ☀️ 49°C
+                      {weatherData[state.id] && (
+                        <p>
+                          Meteo: &nbsp;
+                          {weatherData[state.id].current.temperature2m}
+                          °C
+                          {weatherData[state.id].current.temperature2m < 12
+                            ? '❄️'
+                            : '🌞'}
+                        </p>
+                      )}
                     </div>
                     <div className="text-mauve10 m-0 text-[15px] leading-[1.5]">
                       Habitants : 4 000 000
