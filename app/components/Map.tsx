@@ -105,14 +105,14 @@ const Map = () => {
                     width={50}
                     height={50}
                   />
-                  <div className="text-mauve12 m-0 text-[25px] font-medium leading-[1.5]">
+                  <div className=" m-0 text-[25px] font-google">
                     {state.name}
                   </div>
                 </div>
-                <div className="flex flex-col gap-[15px]">
+                <div className="flex flex-col py-4 gap-[15px]">
                   <div>
-                    <div className="text-mauve12 m-0 text-[15px] font-medium leading-[1.5]">
-                      {weatherData[state.id] && (
+                    <div className=" m-0 text-[15px] font-google leading-[1.5]">
+                      {weatherData[state.id] ? (
                         <p>
                           Meteo: &nbsp;
                           {weatherData[state.id].current.temperature2m}
@@ -121,15 +121,17 @@ const Map = () => {
                             ? '❄️'
                             : '🌞'}
                         </p>
-                      )}
+                      ) : null}
                     </div>
-                    <div className="text-mauve10 m-0 text-[15px] leading-[1.5]">
-                      Habitants : 4 000 000
+                    <div className="text-mauve10 font-google m-0 text-[15px] leading-[1.5]">
+                      Habitants:&nbsp; {state.pop.toLocaleString()}
+                    </div>
+                    <div className="text-mauve10 m-0 font-google text-[15px] leading-[1.5]">
+                      Capitale:&nbsp; {state.capital}
                     </div>
                   </div>
-                  <div className="text-mauve12 m-0 text-[15px] leading-[1.5]">
-                    Components, icons, colors, and templates for building
-                    high-quality, accessible UI. Free and open-source.
+                  <div className=" m-0 text-[15px]  font-extralight ">
+                    {state.desc}
                   </div>
                 </div>
               </div>
