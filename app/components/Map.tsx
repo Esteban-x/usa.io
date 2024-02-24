@@ -111,22 +111,22 @@ const Map = () => {
                 </div>
                 <div className="flex flex-col py-4 gap-[15px]">
                   <div>
-                    <div className=" m-0 text-[15px] font-google leading-[1.5]">
+                    <div className="py-0.2 m-0 text-[15px] font-google leading-[1.5]">
                       {weatherData[state.id] ? (
                         <p>
                           Meteo: &nbsp;
                           {weatherData[state.id].current.temperature2m}
                           °C
                           {weatherData[state.id].current.temperature2m < 12
-                            ? '❄️'
-                            : '🌞'}
+                            ? ' ❄️'
+                            : ' 🌞'}
                         </p>
                       ) : null}
                     </div>
-                    <div className="text-mauve10 font-google m-0 text-[15px] leading-[1.5]">
+                    <div className="py-0.2 text-mauve10 font-google m-0 text-[15px] leading-[1.5]">
                       Habitants:&nbsp; {state.pop.toLocaleString()}
                     </div>
-                    <div className="text-mauve10 m-0 font-google text-[15px] leading-[1.5]">
+                    <div className="py-0.2 text-mauve10 m-0 font-google text-[15px] leading-[1.5]">
                       Capitale:&nbsp; {state.capital}
                     </div>
                   </div>
