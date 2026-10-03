@@ -1,7 +1,9 @@
-import React from 'react'
+import { permanentRedirect } from 'next/navigation'
+import { states } from '@/app/data/states'
 
-const state = ({ params }: { params: { slug: string } }) => {
-  return <div>Parlons de l&apos;état {params.slug}</div>
+// Legacy URLs of the first version of the site used English slugs (/state/north-carolina)
+export default async function LegacyStatePage({ params }: PageProps<'/state/[slug]'>) {
+  const { slug } = await params
+  const state = states.find((s) => s.slug === slug || s.name.toLowerCase().replaceAll(' ', '-') === slug)
+  permanentRedirect(state ? `/etats/${state.slug}` : '/etats')
 }
-
-export default state
